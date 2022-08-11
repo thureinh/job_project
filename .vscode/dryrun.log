@@ -1,0 +1,5 @@
+make.exe: Entering directory `C:/Windows'
+make.exe: Leaving directory `C:/Windows'
+ 
+make.exe: *** No targets specified and no makefile found.  Stop.
+

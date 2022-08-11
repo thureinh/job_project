@@ -1,0 +1,287 @@
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+'\\wsl.localhost\Alpine\root\job_project'
+CMD.EXE was started with the above path as the current directory.
+UNC paths are not supported.  Defaulting to Windows directory.
+
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-pc-mingw32
+ 
+
+# Make data base, printed on Thu Aug 11 22:27:32 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile
+MAKEFLAGS = Rrqp
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+HOMEDRIVE = C:
+# automatic
+@F = $(notdir $@)
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# makefile
+CURDIR := C:/Windows
+# default
+SHELL := sh.exe
+# environment
+WINDIR = C:\WINDOWS
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","avail 
+ableLanguages":{},"_languagePackSupport":true}
+# environment
+ONEDRIVE = C:\Users\thure\OneDrive
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+# makefile
+MAKEFILE_LIST := 
+# environment
+TMP = C:\Users\thure\AppData\Local\Temp
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+PROGRAMDATA = C:\ProgramData
+# environment
+VSCODE_CWD = C:\Users\thure\AppData\Local\Programs\Microsoft VS Code
+# environment
+PATH = C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;D:\XAMPP\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\thure\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\thure\AppData\Local\Programs\Python\Python310\;C:\Users\thure\AppData\Local\Microsoft\WindowsApps;C:\Users\thure\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\thure\AppData\Roaming\Composer\vendor\bin;C:\Users\thure\AppData\Roaming\npm;C:\Program Files (x86)\GnuWin32\bin;
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# environment
+PROCESSOR_ARCHITECTURE = x86
+# environment
+USERPROFILE = C:\Users\thure
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# environment
+NUMBER_OF_PROCESSORS = 8
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives
+# automatic
+%F = $(notdir $%)
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_1956_MSYPJKZIUZXKLXYU
+# environment
+COMPUTERNAME = DESKTOP-9IHKGD4
+# environment
+PROGRAMFILES = C:\Program Files (x86)
+# environment
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERNAME = thure
+# environment
+PUBLIC = C:\Users\Public
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\thure\AppData\Roaming\Code\CachedData\6d9b74a70ca9c7733b29f0456fd8195364076dda
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
+# environment
+LOGONSERVER = \\DESKTOP-9IHKGD4
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+USERDOMAIN = DESKTOP-9IHKGD4
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# default
+MAKE_VERSION := 3.81
+# makefile
+.DEFAULT_GOAL := 
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+JD2_HOME = C:\Users\thure\AppData\Local\JDownloader 2.0
+# environment
+LOCALAPPDATA = C:\Users\thure\AppData\Local
+# environment
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+# default
+MAKE_COMMAND := make.exe
+# environment
+PROCESSOR_ARCHITEW6432 = AMD64
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 142 Stepping 11, GenuineIntel
+# environment
+OS = Windows_NT
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\e0150a78de87b9398c4a50dbb5b87352-1.70.1-main-sock
+# environment
+HOMEPATH = \Users\thure
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# environment
+PROMPT = $P$G
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+SYSTEMROOT = C:\WINDOWS
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+APPDATA = C:\Users\thure\AppData\Roaming
+# environment
+__COMPAT_LAYER = DetectorsAppHealth
+# environment
+TEMP = C:\Users\thure\AppData\Local\Temp
+# environment
+COMSPEC = C:\WINDOWS\system32\cmd.exe
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+SYSTEMDRIVE = C:
+# environment
+SESSIONNAME = Console
+# environment
+PROCESSOR_REVISION = 8e0b
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+PROCESSOR_LEVEL = 6
+# environment
+VSCODE_PID = 1956
+# environment
+USERDOMAIN_ROAMINGPROFILE = DESKTOP-9IHKGD4
+# variable set hash-table stats:
+# Load=83/1024=8%, Rehash=0, Collisions=9/100=9%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# D:\XAMPP\php (key D:/XAMPP/php, mtime 1654315247): 63 files, no impossibilities.
+# C:\Users\thure\AppData\Roaming\Composer\vendor\bin: could not be stat'd.
+# C:\Program Files\Docker\Docker\resources\bin (key C:/Program Files/Docker/Docker/resources/bin, mtime 1660233376): 13 files, no impossibilities.
+# C:\WINDOWS\System32\WindowsPowerShell\v1.0\ (key C:/WINDOWS/System32/WindowsPowerShell/v1.0/, mtime 1645724446): 32 files, no impossibilities.
+# C:\WINDOWS\System32\Wbem (key C:/WINDOWS/System32/Wbem, mtime 1655550338): 172 files, no impossibilities.
+# . (key C:/Windows, mtime 1660229777): 118 files, no impossibilities.
+# C:\Users\thure\AppData\Local\M 
+icrosoft\WindowsApps (key C:/Users/thure/AppData/Local/Microsoft/WindowsApps, mtime 1660219448): 28 files, no impossibilities.
+# C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common (key C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common, mtime 1646786339): 10 files, no impossibilities.
+# C:\Program Files\nodejs\ (key C:/Program Files/nodejs/, mtime 1655041983): 13 files, no impossibilities.
+# C:\WINDOWS\System32\OpenSSH\: could not be stat'd.
+# C:\ProgramData\ComposerSetup\bin (key C:/ProgramData/ComposerSetup/bin, mtime 1652198328): 5 files, no impossibilities.
+# C:\WINDOWS (key C:/Windows, mtime 1660229777): 118 files, no impossibilities.
+# C:\Program Files\Cloudflare\Cloudflare WARP\ (key C:/Program Files/Cloudflare/Cloudflare WARP/, mtime 1659624704): 11 files, no impossibilities.
+# C:\ProgramData\DockerDesktop\version-bin: could not be stat'd.
+# C:\Users\thure\AppData\Local\Programs\Python\Python310\ (key C:/Users/thure/AppData/Local/Programs/Python/Python310/, mtime 1646926702): 18 files, no impossibilities.
+# C:\Users\thure\AppData\Local\Programs\Python\Python310\Scripts\ (key C:/Users/thure/AppData/Local/Programs/Python/Python310/Scripts/, mtime 1646926702): 5 files, no impossibilities.
+# C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1652194813): 8 files, no impossibilities.
+# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660233342): 2996 files, no impossibilities.
+# C:\Users\thure\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/thure/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1660232781): 4 files, no impossibilities.
+# C:\Users\thure\AppData\Roaming\npm (key C:/Users/thure/AppData/Roaming/npm, mtime 1660229089): 9 files, no impossibilities.
+# C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR (key C:/Program Files/NVIDIA Corporation/NVIDIA NvDLISR, mtime 1646784807): 5 files, no impossibilities.
+# C:\Program Files (x86)\GnuWin32\bin (key C:/Program Files (x86)/GnuWin32/bin, mtime 1658666266): 5 files, no impossibilities.
+
+# 3633 files, no impossibilities  
+in 22 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+makefile:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+GNUmakefile:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be up 
+make.exe: *** No rule to make target `all'.  Stop.
+
+dated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# files hash-table stats:
+# Load=5/1024=0%, Rehash=0, Collisions=0/16=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 0
+# # of strcache buffers: 0
+# strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
+# strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
+
+# Finished Make data base on Thu Aug 11 22:27:32 2022
+
+ 
