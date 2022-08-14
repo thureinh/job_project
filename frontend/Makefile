@@ -3,13 +3,13 @@ default:
 run:
 	docker compose exec app npm run dev
 up:
-	docker compose up -d
+	docker compose --project-name bus-ticket up -d
 build:
 	docker compose build --no-cache --force-rm
 init:
 	@make build
 	@make up
-	docker compose exec app npm ci
+	docker compose exec app npm install
 remake:
 	@make destroy
 	@make init
@@ -28,16 +28,5 @@ destroy:
 	docker compose down --rmi all --volumes
 destroy-volumes:
 	docker compose down --volumes
-ps:
-	docker compose ps
-logs:
-	docker compose logs --follow
 app:
 	docker compose exec app ash
-lint:
-	docker compose exec app npm run lint
-lint-fix:
-	@make lint
-	docker compose exec app npm run lintfix
-test:
-	docker compose exec app npm run test

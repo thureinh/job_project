@@ -3,7 +3,7 @@ version: '3.9'
 volumes:
   node_modules_volume:
 services:
-  app:
+  frontend_app:
     image: node:18-alpine3.16
     ports:
       - 3000:3000

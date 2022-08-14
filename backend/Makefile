@@ -1,15 +1,10 @@
 default:
 	@echo Please specify target name!
 up:
-	docker compose up -d --build
-build:
-	docker compose build --no-cache --force-rm
+	docker compose --project-name bus-ticket up -d --build
 init:
-	@make build
 	@make up
 	@make composer-install
-	docker compose exec app cp .env.example .env
-	docker compose exec app php artisan key:generate
 	@make fresh-seed
 remake:
 	@make destroy
@@ -29,13 +24,8 @@ destroy:
 	docker compose down --rmi all --volumes
 destroy-volumes:
 	docker compose down --volumes
-ps:
-	docker compose ps
-logs:
-	docker compose logs --follow
 app:
 	docker compose exec app bash
-
 migrate:
 	docker compose exec app php artisan migrate
 fresh:
@@ -43,8 +33,9 @@ fresh:
 fresh-seed:
 	docker compose exec app php artisan migrate:fresh --seed
 composer-install:
-	docker compose exec app composer install
+	ifeq (, $(shell which composer))
+	$(error "No composer, Please install composer")
+	endif
+	composer install
 dump-autoload:
 	docker compose exec app composer dump-autoload
-test:
-	docker compose exec app php artisan test

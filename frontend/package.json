@@ -10,16 +10,17 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.2",
+    "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
+    "iron-session": "latest",
     "next": "12.2.4",
+    "octokit": "^1.7.0",
     "react": "18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.3.0",
     "sass": "1.53.0",
-    "swr": "^1.0.1",
-    "iron-session": "latest",
-    "octokit": "^1.7.0"
+    "swr": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "8.21.0",
