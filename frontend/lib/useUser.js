@@ -5,7 +5,7 @@ import useSWR from 'swr'
 export default function useUser({
     redirectTo = '',
     redirectIfFound = false,
-}) {
+} = {}) {
     const { data: user, mutate: mutateUser } = useSWR('/api/user')
 
     useEffect(() => {

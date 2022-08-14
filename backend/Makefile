@@ -1,7 +1,7 @@
 default:
 	@echo Please specify target name!
 up:
-	docker compose --project-name bus-ticket up -d --build
+	docker compose up -d
 init:
 	@make up
 	@make composer-install

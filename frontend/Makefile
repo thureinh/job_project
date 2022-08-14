@@ -3,7 +3,7 @@ default:
 run:
 	docker compose exec app npm run dev
 up:
-	docker compose --project-name bus-ticket up -d
+	docker compose up -d
 build:
 	docker compose build --no-cache --force-rm
 init:

@@ -1,6 +1,9 @@
-import AdminLayout from '/layouts/Admin.js'
-export default function Home(props) {
+import Main from '@/components/dashboard/Main'
+
+function Home(props) {
     return (
-        <AdminLayout {...props} />
+        <Main {...props} />
     )
 }
+Home.layout = 'adminLayout'
+export default Home
