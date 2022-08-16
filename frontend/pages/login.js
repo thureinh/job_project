@@ -14,6 +14,7 @@ function Login() {
                 event.preventDefault()
                 const body = {
                     username: event.currentTarget.username.value,
+                    password: event.currentTarget.password.value
                 }
                 try {
                     mutateUser(
@@ -32,7 +33,7 @@ function Login() {
                 <label className="form-label" >Username</label>
             </div>
             <div className="form-outline mb-4">
-                <input type="password" id="form2Example2" className="form-control" />
+                <input type="password" name="password" id="form2Example2" className="form-control" />
                 <label className="form-label" >Password</label>
             </div>
             <div className="row">

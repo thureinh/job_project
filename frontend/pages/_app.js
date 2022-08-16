@@ -11,12 +11,18 @@ import AdminLayout from 'layouts/Admin'
 import LoginLayout from 'layouts/Login'
 import { SWRConfig } from 'swr'
 import fetchJson from 'lib/fetchJson'
+import { Provider } from 'react-redux';
+import { store } from 'store/store'
+import Axios from 'axios'
 
 const layouts = {
   homeLayout: HomeLayout,
   adminLayout: AdminLayout,
   loginLayout: LoginLayout
 }
+
+Axios.defaults.baseURL = process.env.API_BASE_URL
+Axios.defaults.withCredentials = true
 
 function MyApp({ Component, pageProps, ...appProps }) {
   useEffect(() => {
@@ -32,9 +38,11 @@ function MyApp({ Component, pageProps, ...appProps }) {
         },
       }}
     >
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Provider store={store}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
     </SWRConfig>
   )
 }

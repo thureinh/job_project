@@ -9,6 +9,7 @@ use App\Http\Resources\User\UserResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -17,13 +18,14 @@ class LoginController extends Controller
      */
     public function login(Request $request): UserResource|JsonResponse
     {
+        Log::info(json_encode($request->input('username')));
         if (
             Auth::attempt([
-                'name' => $request->user_name,
-                'password' => $request->user_password,
+                'name' => $request->input('username'),
+                'password' => $request->input('password'),
             ])
         ) {
-            // $request->session()->regenerate();
+            $request->session()->regenerate();
             return new UserResource(Auth::user());
         }
         return new JsonResponse(['message' => 'Login Failed'], 401);
