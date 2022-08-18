@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Route extends Model
 {
     use HasFactory;
@@ -37,4 +38,14 @@ class Route extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    public function fromLocation()
+    {
+        return $this->belongsTo(Location::class, 'from', 'id');
+    }
+
+    public function toLocation()
+    {
+        return $this->belongsTo(Location::class, 'to', 'id');
+    }
 }

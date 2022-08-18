@@ -21,5 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource('routes', RouteController::class);
-    Route::get('/locations', [RouteController::class, 'getLocations']);
+    Route::get('/name-check', [RouteController::class, 'isDuplicated']);
 });
+Route::get('/locations', [RouteController::class, 'getLocations']);

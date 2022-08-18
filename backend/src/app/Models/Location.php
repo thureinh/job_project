@@ -33,4 +33,14 @@ class Location extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    public function fromRoutes()
+    {
+        return $this->hasMany(Route::class, 'from', 'id');
+    }
+
+    public function toRoutes()
+    {
+        return $this->hasMany(Route::class, 'to', 'id');
+    }
 }

@@ -1,10 +1,11 @@
 import * as React from 'react';
-import Button from '../components/Button';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
+import SearchCard from '../components/SearchCard';
+import Box from '@mui/material/Box';
 
 const backgroundImage =
-  'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400';
+  'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&dl=juan-encalada-6mcVaoGNz1w-unsplash.jpg&q=80&fm=jpg&crop=entropy&cs=tinysrgb';
 
 export default function ProductHero() {
   return (
@@ -22,29 +23,17 @@ export default function ProductHero() {
         alt="increase priority"
       />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Upgrade your Sundays
+        Travel with us
       </Typography>
-      <Typography
-        color="inherit"
-        align="center"
-        variant="h5"
-        sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
+      <Box
+        sx={{
+          width: 500,
+          height: 300,
+        }}
+        mt={5}
       >
-        Enjoy secret offers up to -70% off the best luxury hotels every Sunday.
-      </Typography>
-      <Button
-        color="secondary"
-        variant="contained"
-        size="large"
-        component="a"
-        href="/premium-themes/onepirate/sign-up/"
-        sx={{ minWidth: 200 }}
-      >
-        Register
-      </Button>
-      <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
-        Discover the experience
-      </Typography>
+        <SearchCard />
+      </Box>
     </ProductHeroLayout>
   );
 }

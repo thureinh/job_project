@@ -1,49 +1,96 @@
 import * as React from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+import {
+    DataGrid,
+    gridPageCountSelector,
+    gridPageSelector,
+    useGridApiContext,
+    useGridSelector,
+} from '@mui/x-data-grid';
+import { useDispatch, useSelector } from 'react-redux';
+import { showRoutes } from '../../features/routeSlice';
+import Pagination from '@mui/material/Pagination';
+import CustomNoRowsOverlay from './NoRowsOverlay';
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 130 },
-    { field: 'lastName', headerName: 'Last name', width: 130 },
-    {
-        field: 'age',
-        headerName: 'Age',
-        type: 'number',
-        width: 90,
-    },
-    {
-        field: 'fullName',
-        headerName: 'Full name',
-        description: 'This column has a value getter and is not sortable.',
-        sortable: false,
-        width: 160,
-        valueGetter: (params) =>
-            `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    },
-];
-
-const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+    { field: 'car_name', headerName: 'Car Name', width: 200 },
+    { field: 'from', headerName: 'From', width: 200, valueGetter: (params) => `${params.row.from.name || ''}` },
+    { field: 'to', headerName: 'To', width: 200, valueGetter: (params) => `${params.row.from.name || ''}` },
+    { field: 'date', headerName: 'Date', width: 200 },
+    { field: 'seat_count', headerName: 'Seat Count', width: 200 },
 ];
 
 export default function DataTable() {
+    const dispatch = useDispatch();
+    const isLoading = useSelector((state) => state.route.loading);
+    const pageInfo = useSelector((state) => state.route.pageInfo);
+    const data = useSelector((state) => state.route.data);
+    const [page, setPage] = React.useState(0);
+    const [pageSize, setPageSize] = React.useState(5);
+    const [sortModel, setSortModel] = React.useState({});
+    const [rowCountState, setRowCountState] = React.useState(
+        pageInfo?.total || 0,
+    );
+
+    const requestFlag = React.useRef(true);
+    React.useEffect(() => {
+        if (requestFlag.current)
+            dispatch(showRoutes({ page: page + 1, pageSize, ...sortModel }))
+                .then(() => {
+                    requestFlag.current = true;
+                });
+        requestFlag.current = false;
+    }, [dispatch, page, pageSize, sortModel]);
+
+    React.useEffect(() => {
+        setRowCountState((prevRowCountState) =>
+            pageInfo?.total !== undefined
+                ? pageInfo?.total
+                : prevRowCountState,
+        );
+    }, [pageInfo?.total, setRowCountState]);
+
+    const handleSortModelChange = React.useCallback((sortModel) => {
+        console.log(sortModel);
+        if (sortModel.length !== 0)
+            setSortModel(sortModel[0]);
+        else
+            setSortModel({});
+    }, []);
+
     return (
         <div style={{ height: 400, width: '100%' }}>
             <DataGrid
-                rows={rows}
-                columns={columns}
-                pageSize={5}
+                pagination
+                rowCount={rowCountState}
+                loading={isLoading}
                 rowsPerPageOptions={[5]}
-                checkboxSelection
+                paginationMode="server"
+                components={{
+                    Pagination: CustomPagination,
+                    NoRowsOverlay: CustomNoRowsOverlay,
+                }}
+                sortingMode="server"
+                onSortModelChange={handleSortModelChange}
+                rows={data}
+                pageSize={pageSize}
+                onPageChange={(newPage) => setPage(newPage)}
+                onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+                columns={columns}
             />
         </div>
+    );
+}
+
+function CustomPagination() {
+    const apiRef = useGridApiContext();
+    const page = useGridSelector(apiRef, gridPageSelector);
+    const pageCount = useGridSelector(apiRef, gridPageCountSelector);
+    return (
+        <Pagination
+            color="primary"
+            count={pageCount}
+            page={page + 1}
+            onChange={(event, value) => apiRef.current.setPage(value - 1)}
+        />
     );
 }

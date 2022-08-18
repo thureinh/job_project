@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->truncate();
         DB::table('locations')->truncate();
+        DB::table('routes')->truncate();
+        DB::table('tickets')->truncate();
         DB::table('users')->insert([
             'name' => 'admin',
             'password' => Hash::make('root'),

@@ -1,5 +1,4 @@
 import React from 'react';
-import AppFooter from './modules/views/AppFooter';
 import ProductHero from './modules/views/ProductHero';
 import AppAppBar from './modules/views/AppAppBar';
 import LoginPage from './pages/SignIn';
@@ -23,7 +22,6 @@ function App() {
                     <Route path="/dashboard" element={<Dashboard />}></Route>
                 </Route>
             </Routes>
-            <AppFooter />
         </React.Fragment>
     );
 }

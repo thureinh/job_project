@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\Location\LocationCollection;
+use App\Http\Resources\Route\RouteCollection;
 use App\Models\Location;
+use App\Models\Route;
 
 class RouteController extends Controller
 {
@@ -13,9 +15,13 @@ class RouteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->has(['field', 'sort'])) {
+            return new RouteCollection(Route::orderBy($request->input('field'), $request->input('sort'))
+                ->paginate(5));
+        }
+        return new RouteCollection(Route::orderBy('id', 'desc')->paginate(5));
     }
 
     /**
@@ -36,7 +42,8 @@ class RouteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Route::create($request->all());
+        return new RouteCollection(Route::all());
     }
 
     /**
@@ -88,5 +95,12 @@ class RouteController extends Controller
     {
         $locations = new Location();
         return new LocationCollection($locations->all());
+    }
+
+    public function isDuplicated(Request $request)
+    {
+        return response()->json([
+            'duplicated' => Route::where('car_name', $request->input('name'))->count() > 0
+        ]);
     }
 }

@@ -9,6 +9,7 @@ class Ticket extends Model
 {
     use HasFactory;
 
+    protected $table = 'tickets';
     /**
      * The attributes that are mass assignable.
      *
