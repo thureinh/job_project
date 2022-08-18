@@ -4,6 +4,7 @@ import ProductHero from './modules/views/ProductHero';
 import AppAppBar from './modules/views/AppAppBar';
 import LoginPage from './pages/SignIn';
 import Dashboard from './pages/Dashboard';
+import ProtectedRoute from './modules/ProtectedRoute';
 import withRoot from './modules/withRoot';
 
 import {
@@ -18,7 +19,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<ProductHero />}></Route>
                 <Route path="/sign-in" element={<LoginPage />}></Route>
-                <Route path="/dashboard" element={ <Dashboard/> }></Route>
+                <Route element={<ProtectedRoute />}>
+                    <Route path="/dashboard" element={<Dashboard />}></Route>
+                </Route>
             </Routes>
             <AppFooter />
         </React.Fragment>

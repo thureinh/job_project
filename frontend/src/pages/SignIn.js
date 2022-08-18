@@ -11,13 +11,15 @@ import FormFeedback from '../modules/form/FormFeedback';
 import Button from '@mui/material/Button';
 import { Link as ReactLink } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectSent, loginAsync, selectUser } from '../features/loginSlice';
+import { selectSent, selectStatus, loginAsync, selectUser } from '../features/loginSlice';
 import withRoot from '../modules/withRoot';
 import { useNavigate } from "react-router-dom";
+import Alert from '@mui/material/Alert';
 
 function SignIn() {
   const sent = useSelector(selectSent);
   const user = useSelector(selectUser);
+  const authStatus = useSelector(selectStatus);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,7 +37,6 @@ function SignIn() {
         errors.username = usernameError;
       }
     }
-
     return errors;
   };
 
@@ -46,6 +47,8 @@ function SignIn() {
   return (
     <React.Fragment>
       <AppForm>
+        {authStatus && authStatus === 'failed' &&
+          <Alert severity="error">Login Failed!</Alert>}
         <Form
           onSubmit={handleSubmit}
           subscription={{ submitting: true }}

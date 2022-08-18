@@ -5,10 +5,12 @@ import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
+import { injectStore } from './app/connector';
 import './index.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
+injectStore(store);
 
 root.render(
   <React.StrictMode>
