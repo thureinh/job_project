@@ -26,11 +26,14 @@ export default function CreateForm({ onCancel, onSuccess }) {
     const [fromList, setFromList] = React.useState([]);
     const [toList, setToList] = React.useState([]);
     const [dateValue, setDateValue] = React.useState(new Date());
+    const [searching, setSearching] = React.useState(false);
+    const [nameError, setNameError] = React.useState('');
     const dispatch = useDispatch();
     const locations = useSelector((state) => state.location.locations);
     const loading = useSelector((state) => state.route.loading);
-    let submit;
 
+    const isNameError = React.useMemo(() => nameError === '' ? false : true, [nameError]);
+    let submit;
     React.useEffect(() => {
         if (locations.length > 0) {
             setFromList(locations);
@@ -83,42 +86,50 @@ export default function CreateForm({ onCancel, onSuccess }) {
             return lastResult;
         };
     };
-    const handleClose = (cmd) => {
+    const handleClose = (event, cmd) => {
         setDialogOpen(false);
         if (cmd === 'agree')
-            submit();
+            submit(event);
     };
     const debounceTimeout = React.useRef(false);
 
     const asyncRequest = async (name) => {
+        setSearching(true);
         const response = await axios.get('/api/name-check', { params: { name } });
+        setSearching(false);
         return response.data.duplicated;
     }
 
-    const usernameAvailable = simpleMemoize(async value => {
+    const handleNameChange = async (event, callback) => {
+        validateUsername(event.target.value);
+        callback(event);
+    }
+
+    const validateUsername = simpleMemoize(async value => {
         let duplicated = false;
         clearTimeout(debounceTimeout.current);
-        await new Promise((resolve) => { debounceTimeout.current = setTimeout(resolve, 1000) })
+        await new Promise((resolve) => { debounceTimeout.current = setTimeout(resolve, 200) })
             .then(async () => {
                 duplicated = await asyncRequest(value);
             })
         if (duplicated)
-            return 'User Name Duplicated';
+            setNameError('Name is duplicated');
+        else
+            setNameError('');
     });
 
-    const composeValidators = (...validators) => value =>
-        validators.reduce((error, validator) => error || validator(value), undefined);
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
                 Route Create Form
             </Typography>
+            <h1>HELLO{isNameError ? 'true' : 'false'}</h1>
             <Form
                 onSubmit={onSubmit}
                 render={({ handleSubmit }) => {
                     submit = handleSubmit;
                     return (
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <Grid container spacing={3}>
                                 <Grid item xs={12} sm={6}>
                                     <Field name="from" validate={required}>
@@ -167,7 +178,7 @@ export default function CreateForm({ onCancel, onSuccess }) {
                                     </Field>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                    <Field name="car_name" validate={composeValidators(required, usernameAvailable)}>
+                                    <Field name="car_name" validate={required}>
                                         {({ input, meta }) => (
                                             <FormControl fullWidth>
                                                 <Grid container spacing={0}>
@@ -175,12 +186,13 @@ export default function CreateForm({ onCancel, onSuccess }) {
                                                         <TextField
                                                             fullWidth
                                                             disabled={loading}
-                                                            error={meta.error && meta.touched}
+                                                            error={(meta.error && meta.touched) || isNameError}
                                                             id="standard-basic"
                                                             label="Car Name"
                                                             variant="outlined"
                                                             {...input}
-                                                            helperText={(meta.touched && meta.error) || ''}
+                                                            onChange={event => handleNameChange(event, input.onChange)}
+                                                            helperText={(meta.touched && meta.error) || nameError || ''}
                                                         />
                                                     </Grid>
                                                     <Grid item xs={2} md={2}>
@@ -188,7 +200,7 @@ export default function CreateForm({ onCancel, onSuccess }) {
                                                             display: 'flex',
                                                             justifyContent: 'center',
                                                         }}>
-                                                            {meta.validating && (
+                                                            {searching && (
                                                                 <CircularProgress
                                                                     color="primary"
                                                                     size={40}
@@ -239,6 +251,7 @@ export default function CreateForm({ onCancel, onSuccess }) {
                                     <FormControl fullWidth>
                                         <LoadingButton
                                             loading={loading}
+                                            disabled={searching || isNameError}
                                             color="primary"
                                             loadingPosition="start"
                                             startIcon={<SaveIcon />}

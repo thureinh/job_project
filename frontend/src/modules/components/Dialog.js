@@ -11,8 +11,8 @@ import WarningIcon from '@mui/icons-material/Warning';
 export default function SimpleDialog(props) {
     const { onClose, open } = props;
 
-    const handleClose = (cmd) => {
-        onClose(cmd);
+    const handleClose = (event, cmd) => {
+        onClose(event, cmd);
     };
 
     return (
@@ -31,8 +31,8 @@ export default function SimpleDialog(props) {
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={() => { handleClose('disagree') }}>Cancel</Button>
-                <Button onClick={() => { handleClose('agree') }} autoFocus>
+                <Button onClick={(event) => { handleClose(event, 'disagree') }}>Cancel</Button>
+                <Button onClick={(event) => { handleClose(event, 'agree') }} autoFocus>
                     OK
                 </Button>
             </DialogActions>
