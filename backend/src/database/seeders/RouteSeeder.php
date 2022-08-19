@@ -20,7 +20,7 @@ class RouteSeeder extends Seeder
             DB::table('routes')->insert([
                 'car_name'   => Str::random(5),
                 'from'       => 1,
-                'to'         => 1,
+                'to'         => 2,
                 'date'       => '2022-08-22',
                 'seat_count' => 30
             ]);

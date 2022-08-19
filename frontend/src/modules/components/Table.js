@@ -14,7 +14,7 @@ import CustomNoRowsOverlay from './NoRowsOverlay';
 const columns = [
     { field: 'car_name', headerName: 'Car Name', width: 200 },
     { field: 'from', headerName: 'From', width: 200, valueGetter: (params) => `${params.row.from.name || ''}` },
-    { field: 'to', headerName: 'To', width: 200, valueGetter: (params) => `${params.row.from.name || ''}` },
+    { field: 'to', headerName: 'To', width: 200, valueGetter: (params) => `${params.row.to.name || ''}` },
     { field: 'date', headerName: 'Date', width: 200 },
     { field: 'seat_count', headerName: 'Seat Count', width: 200 },
 ];
@@ -50,7 +50,6 @@ export default function DataTable() {
     }, [pageInfo?.total, setRowCountState]);
 
     const handleSortModelChange = React.useCallback((sortModel) => {
-        console.log(sortModel);
         if (sortModel.length !== 0)
             setSortModel(sortModel[0]);
         else

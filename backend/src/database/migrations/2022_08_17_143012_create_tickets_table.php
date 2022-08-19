@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('route_id');
-            $table->longText('ticket_code');
+            $table->longText('code');
             $table->timestamps();
         });
     }

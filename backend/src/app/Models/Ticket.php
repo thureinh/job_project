@@ -17,7 +17,7 @@ class Ticket extends Model
      */
     protected $fillable = [
         'route_id',
-        'ticket_code'
+        'code'
     ];
 
     /**
@@ -33,4 +33,9 @@ class Ticket extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    public function route()
+    {
+        return $this->belongsTo(Ticket::class, 'route_id', 'id');
+    }
 }

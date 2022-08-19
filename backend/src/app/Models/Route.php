@@ -48,4 +48,9 @@ class Route extends Model
     {
         return $this->belongsTo(Location::class, 'to', 'id');
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'route_id', 'id');
+    }
 }

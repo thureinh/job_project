@@ -1,7 +1,7 @@
 default:
 	@echo Please specify target name!
 run:
-	docker compose exec app npm run dev
+	docker compose exec app npm start
 up:
 	docker compose up -d
 build:

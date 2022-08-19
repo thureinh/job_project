@@ -89,19 +89,19 @@ export default function CreateForm({ onCancel, onSuccess }) {
             submit();
     };
     const debounceTimeout = React.useRef(false);
+
+    const asyncRequest = async (name) => {
+        const response = await axios.get('/api/name-check', { params: { name } });
+        return response.data.duplicated;
+    }
+
     const usernameAvailable = simpleMemoize(async value => {
         let duplicated = false;
         clearTimeout(debounceTimeout.current);
-        const asyncRequest = async (name) => {
-            const response = await axios.get('/api/name-check', { params: { name } });
-            duplicated = response.data.duplicated;
-        }
-        await new Promise((resolve) => {
-            debounceTimeout.current = setTimeout(async () => {
-                await asyncRequest(value);
-                resolve();
-            }, 1000);
-        });
+        await new Promise((resolve) => { debounceTimeout.current = setTimeout(resolve, 1000) })
+            .then(async () => {
+                duplicated = await asyncRequest(value);
+            })
         if (duplicated)
             return 'User Name Duplicated';
     });
@@ -118,7 +118,7 @@ export default function CreateForm({ onCancel, onSuccess }) {
                 render={({ handleSubmit }) => {
                     submit = handleSubmit;
                     return (
-                        <form onSubmit={handleSubmit}>
+                        <form>
                             <Grid container spacing={3}>
                                 <Grid item xs={12} sm={6}>
                                     <Field name="from" validate={required}>

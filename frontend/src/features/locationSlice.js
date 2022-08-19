@@ -19,7 +19,7 @@ export const locationSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchLocations.fulfilled, (state, action) => {
-                state.locations = action.payload.data;
+                state.locations = action.payload;
             });
     },
 });

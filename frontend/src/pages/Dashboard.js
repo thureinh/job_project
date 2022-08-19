@@ -62,7 +62,7 @@ function Dashboard() {
                 </Container>
                 <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} onClose={handleClose} open={snackOpen} autoHideDuration={3000}>
                     <Alert severity="success" onClose={handleClose} sx={{ width: '100%' }}>
-                        This is a success message!
+                        Route successfully created.
                     </Alert>
                 </Snackbar>
             </Box>
