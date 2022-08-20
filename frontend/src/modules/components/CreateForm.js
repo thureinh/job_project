@@ -108,7 +108,7 @@ export default function CreateForm({ onCancel, onSuccess }) {
     const validateUsername = simpleMemoize(async value => {
         let duplicated = false;
         clearTimeout(debounceTimeout.current);
-        await new Promise((resolve) => { debounceTimeout.current = setTimeout(resolve, 200) })
+        await new Promise((resolve) => { debounceTimeout.current = setTimeout(resolve, 500) })
             .then(async () => {
                 duplicated = await asyncRequest(value);
             })

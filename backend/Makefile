@@ -3,9 +3,9 @@ default:
 up:
 	docker compose up -d
 init:
+	cp ./src/.env.example ./src/.env
 	@make up
-	@make composer-install
-	@make fresh-seed
+	@make key-generate
 remake:
 	@make destroy
 	@make init
@@ -26,16 +26,13 @@ destroy-volumes:
 	docker compose down --volumes
 app:
 	docker compose exec backend_app bash
+key-generate:
+	docker compose exec backend_app php artisan key:generate
 migrate:
 	docker compose exec backend_app php artisan migrate
 fresh:
 	docker compose exec backend_app php artisan migrate:fresh
 fresh-seed:
 	docker compose exec backend_app php artisan migrate:fresh --seed
-composer-install:
-	ifeq (, $(shell which composer))
-	$(error "No composer, Please install composer")
-	endif
-	composer install
 dump-autoload:
 	docker compose exec backend_app composer dump-autoload

@@ -1,6 +1,7 @@
-## Bus Ticket System
+# Bus Ticket System
+This is a simple/small scale project for job entry.
 
-**Prerequisites**
+## Prerequisites
 
  - [Docker](https://www.docker.com/products/docker-desktop/) (*wsl2 integration recommended*)
  - [GNU Make](http://gnuwin32.sourceforge.net/packages/make.htm) 
@@ -21,3 +22,4 @@ This system is about booking ticket for buses. There are two roles in this syste
   4. In frontend directory, type `make init`, then `make run`. You should see development server running in terminal.
   5. In src directory of backend, type `composer install`.
   6. Then in root directory of backend, type `make init`.
+  7. After that, run `make fresh-seed`
