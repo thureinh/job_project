@@ -1,7 +1,7 @@
 default:
 	@echo Please specify target name!
 run:
-	docker compose exec app npm start
+	docker compose exec frontend_app npm start
 up:
 	docker compose up -d
 build:
@@ -9,7 +9,7 @@ build:
 init:
 	@make build
 	@make up
-	docker compose exec app npm install
+	docker compose exec frontend_app npm install
 remake:
 	@make destroy
 	@make init
@@ -29,4 +29,4 @@ destroy:
 destroy-volumes:
 	docker compose down --volumes
 app:
-	docker compose exec app ash
+	docker compose exec frontend_app ash

@@ -25,17 +25,17 @@ destroy:
 destroy-volumes:
 	docker compose down --volumes
 app:
-	docker compose exec app bash
+	docker compose exec backend_app bash
 migrate:
-	docker compose exec app php artisan migrate
+	docker compose exec backend_app php artisan migrate
 fresh:
-	docker compose exec app php artisan migrate:fresh
+	docker compose exec backend_app php artisan migrate:fresh
 fresh-seed:
-	docker compose exec app php artisan migrate:fresh --seed
+	docker compose exec backend_app php artisan migrate:fresh --seed
 composer-install:
 	ifeq (, $(shell which composer))
 	$(error "No composer, Please install composer")
 	endif
 	composer install
 dump-autoload:
-	docker compose exec app composer dump-autoload
+	docker compose exec backend_app composer dump-autoload
