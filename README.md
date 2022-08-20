@@ -11,9 +11,13 @@
 This system is about booking ticket for buses. There are two roles in this system **—** admin and user. Admin manage routes and user can explore those routes and book.
 
 ## Installation
-1. First, install docker and composer.
-2. Clone this repository.
-3. Then create a docker network named **bus-ticket-network**.`docker network create bus-ticket-network`
-4. In frontend directory, type `make init`, then `make run`. You should see development server running in terminal.
-5. In src directory of backend, type `composer install`.
-6. Then in root directory of backend, type `make init`.
+ 1. First, install docker and composer.
+ 2. Clone this repository.
+
+> If error occur in cloning process due to zone.identifier file, run this command as administrator`git config --system core.protectNTFS false` and then clone again.
+
+ 3. Then create a docker network named **bus-ticket-network**
+ `docker network create bus-ticket-network`
+  4. In frontend directory, type `make init`, then `make run`. You should see development server running in terminal.
+  5. In src directory of backend, type `composer install`.
+  6. Then in root directory of backend, type `make init`.
