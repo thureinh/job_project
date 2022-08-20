@@ -17,9 +17,8 @@ This system is about booking ticket for buses. There are two roles in this syste
 
 > If error occur in cloning process due to zone.identifier file, run this command as administrator`git config --system core.protectNTFS false` and then clone again.
 
- 3. Then create a docker network named **bus-ticket-network**
- `docker network create bus-ticket-network`
-  4. In frontend directory, type `make init`, then `make run`. You should see development server running in terminal.
-  5. In src directory of backend, type `composer install`.
-  6. Then in root directory of backend, type `make init`.
-  7. After that, run `make fresh-seed`
+ 3. In **[project_dir]/backend/src**, make `composer install`.
+ 4. Then create a docker network named **bus-ticket-network**, type`docker network create bus-ticket-network`
+ 5. In **[project_dir]/frontend**, type `make init`, then `make run`. You should see development server running in terminal.
+ 6. Then in **[project_dir]/backend**, type `make init`.
+ 7. After that, run `make fresh-seed`
